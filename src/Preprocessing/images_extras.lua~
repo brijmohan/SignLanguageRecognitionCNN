@@ -1,0 +1,20 @@
+require 'image'
+rootPath = "/home/anirudh/Computer Sc/Project_SMAI/Code and Data/Data/Train/Images"
+labels = dir.getdirectories(rootPath)
+for _,letter in ipairs(labels) do
+--    print(idx,letter)
+    imageNames = dir.getfiles(letter)
+--    print(imageNames)
+    for _,imageName in ipairs(imageNames) do
+        img = image.load(imageName)
+        img_vflip = image.vflip(img)
+        img_hflip = image.hflip(img)
+        img_rot30 = image.rotate(img,math.pi/6)
+        img_rot30neg = image.rotate(img,-(math.pi/6))
+        image.save(imageName:sub(1,-5)..'_1.png',img_vflip)
+        image.save(imageName:sub(1,-5)..'_2.png',img_hflip)
+        image.save(imageName:sub(1,-5)..'_3.png',img_rot30)
+        image.save(imageName:sub(1,-5)..'_4.png',img_rot30neg)
+    end
+end
+
