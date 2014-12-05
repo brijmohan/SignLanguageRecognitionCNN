@@ -36,24 +36,25 @@
 	----------------------------------------------------------------------
 	print '==> define parameters'
 
-	-- 26-class problem
-	noutputs = 26
+	-- N-class problem
+        noutputs = 10
 
 	-- input dimensions
-	nfeats = 3
-	width = 32
-	height = 32
-	ninputs = nfeats*width*height
+        nfeats = 3
+        width = 128
+        height = 128
+        ninputs = nfeats*width*height
 
 	-- number of hidden units (for MLP only):
 		nhiddens = ninputs / 2
 
-		-- hidden units, filter sizes (for ConvNet only):
-			nstates = {16,256,128}
-			fanin = {1,4}
-			filtsize = 5
-			poolsize = 2
-			normkernel = image.gaussian1D(7)
+    -- hidden units, filter sizes (for ConvNet only):
+        nstates = {32,64,256,128}
+        fanin = {1,4,4}
+        filtsize = 5
+        poolsize = 2
+        stride = 2
+        normkernel = image.gaussian1D(7)
 
 	----------------------------------------------------------------------
 	print '==> construct model'
@@ -77,6 +78,8 @@
 	elseif opt.model == 'convnet' then
 
 	    if opt.type == 'cuda' then 
+        
+            print 'Creating cuda model...'
 	        -- a typical convolutional network, with locally-normalized hidden
 		    -- units, and L2-pooling
 	        -- Note: the architecture of this convnet is loosely based on Pierre Sermanet's
@@ -87,50 +90,105 @@
 		    -- the classifier.
             -- Container:
             model = nn.Sequential()
+	        
 	        -- stage 1 : filter bank -> squashing -> L2 pooling -> normalization
             model:add(nn.SpatialConvolutionMM(nfeats, nstates[1], filtsize, filtsize))
-	        model:add(nn.Threshold(0,1e-6))
-	        model:add(nn.SpatialMaxPooling(poolsize,poolsize,poolsize,poolsize))
-	        --model:add(nn.SpatialSubtractiveNormalization(16, normkernel))
+	        --model:add(nn.Threshold(0,1e-6))
+	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
+	        --model:add(nn.Dropout(0.5))
+	        --model:add(nn.SpatialSubtractiveNormalization(nstates[1], normkernel))
+	        
 	        -- stage 2 : filter bank -> squashing -> L2 pooling -> normalization
             model:add(nn.SpatialConvolutionMM(nstates[1], nstates[2], filtsize, filtsize))
-	        model:add(nn.Threshold(0,1e-6))
-	        model:add(nn.SpatialMaxPooling(poolsize,poolsize,poolsize,poolsize))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
+	        --model:add(nn.Dropout(0.5))
+        	--model:add(nn.SpatialSubtractiveNormalization(nstates[2], normkernel))
+        	
+        	-- stage 3 : filter bank -> squashing -> L2 pooling -> normalization
+            model:add(nn.SpatialConvolutionMM(nstates[2], nstates[3], filtsize, filtsize))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
         	-- model:add(nn.SpatialSubtractiveNormalization(nstates[2], normkernel))
-	        -- stage 3 : standard 2-layer neural network
-            model:add(nn.View(nstates[2]*5*5))
-            model:add(nn.Dropout(0.5)) -- Adding dropout
-	        model:add(nn.Linear(nstates[2]*5*5, nstates[3]))
-	        model:add(nn.Threshold(0,1e-6))
-	        model:add(nn.Linear(nstates[3], noutputs))    
+	        
+	        -- stage 4 : standard 2-layer neural network
+            --model:add(nn.View(nstates[2]*5*5))
+            model:add(nn.View(nstates[3]*12*12))
+            --model:add(nn.Dropout(0.5)) -- Adding dropout
+	        --model:add(nn.Linear(nstates[2]*5*5, nstates[3]))
+	        model:add(nn.Linear(nstates[3]*12*12, nstates[4]))
+	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        --model:add(nn.Dropout(0.5))
+	        --model:add(nn.Linear(256, 64))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        --model:add(nn.Tanh())
+	        --model:add(nn.ReLU())   
+	        --model:add(nn.Dropout(0.5))	        
+	        model:add(nn.Linear(nstates[4], noutputs))
 	    
 	    else 
-            -- a typical convolutional network, with locally-normalized hidden
-            -- units, and L2-pooling
-     
-            -- Note: the architecture of this convnet is loosely based on Pierre Sermanet's
-            -- work on this dataset (http://arxiv.org/abs/1204.3968). In particular
-            -- the use of LP-pooling (with P=2) has a very positive impact on
-            -- generalization. Normalization is not done exactly as proposed in
-            -- the paper, and low-level (first layer) features are not fed to
-            -- the classifier.
+	        -- a typical convolutional network, with locally-normalized hidden
+		    -- units, and L2-pooling
+	        -- Note: the architecture of this convnet is loosely based on Pierre Sermanet's
+		    -- work on this dataset (http://arxiv.org/abs/1204.3968). In particular
+	        -- the use of LP-pooling (with P=2) has a very positive impact on
+		    -- generalization. Normalization is not done exactly as proposed in
+	        -- the paper, and low-level (first layer) features are not fed to
+		    -- the classifier.
             -- Container:
             model = nn.Sequential()
+	        
 	        -- stage 1 : filter bank -> squashing -> L2 pooling -> normalization
-		        model:add(nn.SpatialConvolutionMap(nn.tables.random(nfeats, nstates[1], fanin[1]), filtsize, filtsize))
+            --model:add(nn.SpatialConvolutionMM(nfeats, nstates[1], filtsize, filtsize))
+            model:add(nn.SpatialConvolutionMap(nn.tables.random(nfeats, nstates[1], fanin[1]), filtsize, filtsize))
+	        --model:add(nn.Threshold(0,1e-6))
 	        model:add(nn.Tanh())
-	        model:add(nn.SpatialLPPooling(nstates[1],2,poolsize,poolsize,poolsize,poolsize))
-	        model:add(nn.SpatialSubtractiveNormalization(16, normkernel))
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
+	        --model:add(nn.Dropout(0.5))
+	        model:add(nn.SpatialSubtractiveNormalization(nstates[1], normkernel))
+	        
 	        -- stage 2 : filter bank -> squashing -> L2 pooling -> normalization
-		        model:add(nn.SpatialConvolutionMap(nn.tables.random(nstates[1], nstates[2], fanin[2]), filtsize, filtsize))
+            --model:add(nn.SpatialConvolutionMM(nstates[1], nstates[2], filtsize, filtsize))
+            model:add(nn.SpatialConvolutionMap(nn.tables.random(nstates[1], nstates[2], fanin[2]), filtsize, filtsize))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
+	        --model:add(nn.Dropout(0.5))
+        	model:add(nn.SpatialSubtractiveNormalization(nstates[2], normkernel))
+        	
+        	-- stage 3 : filter bank -> squashing -> L2 pooling -> normalization
+            --model:add(nn.SpatialConvolutionMM(nstates[1], nstates[3], filtsize, filtsize))
+            model:add(nn.SpatialConvolutionMap(nn.tables.random(nstates[2], nstates[3], fanin[3]), filtsize, filtsize))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        model:add(nn.Tanh())
+	        --model:add(nn.ReLU())
+	        model:add(nn.SpatialMaxPooling(poolsize, poolsize, stride, stride))
+        	model:add(nn.SpatialSubtractiveNormalization(nstates[3], normkernel))
+	        
+	        -- stage 4 : standard 2-layer neural network
+            --model:add(nn.View(nstates[2]*5*5))
+            model:add(nn.View(nstates[3]*4*4))
+            --model:add(nn.Dropout(0.5)) -- Adding dropout
+	        --model:add(nn.Linear(nstates[2]*5*5, nstates[3]))
+	        model:add(nn.Linear(nstates[3]*4*4, nstates[4]))
 	        model:add(nn.Tanh())
-	        model:add(nn.SpatialLPPooling(nstates[2],2,poolsize,poolsize,poolsize,poolsize))
-	        model:add(nn.SpatialSubtractiveNormalization(nstates[2], normkernel))
-	        -- stage 3 : standard 2-layer neural network
-		        model:add(nn.Reshape(nstates[2]*5*5))
-	        model:add(nn.Linear(nstates[2]*5*5, nstates[3]))
-	        model:add(nn.Tanh())
-	        model:add(nn.Linear(nstates[3], noutputs))
+	        --model:add(nn.ReLU())
+	        --model:add(nn.Dropout(0.5))
+	        --model:add(nn.Linear(256, 64))
+	        --model:add(nn.Threshold(0,1e-6))
+   	        --model:add(nn.Tanh())
+	        --model:add(nn.ReLU())   
+	        --model:add(nn.Dropout(0.5))	        
+	        model:add(nn.Linear(nstates[4], noutputs))
 	    
 	    end
 

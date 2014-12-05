@@ -4,31 +4,30 @@
 -- testData = {data=Tensor(tesize,3,32,32), labels=Tensor(N)}
 require 'nn'
 require 'image'
-data = torch.load("/home/idh/mallikarjun/SignLanguageDetection/data/Train/trainData_rgb_32.dat")
-data.size = function(self) return (#self.data)[1] end
+--data = torch.load(rgb_dataPath)
+yuv_data = samples
+yuv_data.size = function(self) return (#self.data)[1] end
 -- preprocess trainSet
 normalization = nn.SpatialContrastiveNormalization(1, image.gaussian1D(7))
-for i = 1,data:size() do
+for i = 1,yuv_data:size() do
    -- rgb -> yuv
-   local rgb = data.data[i]
+   local rgb = yuv_data.data[i]
    local yuv = image.rgb2yuv(rgb)
    -- normalize y locally:
    yuv[1] = normalization(yuv[{{1}}])
-   data.data[i] = yuv
+   yuv_data.data[i] = yuv
 end
 -- normalize u globally:
-mean_u = data.data[{ {},2,{},{} }]:mean()
-std_u = data.data[{ {},2,{},{} }]:std()
-data.data[{ {},2,{},{} }]:add(-mean_u)
-data.data[{ {},2,{},{} }]:div(-std_u)
+mean_u = yuv_data.data[{ {},2,{},{} }]:mean()
+std_u = yuv_data.data[{ {},2,{},{} }]:std()
+yuv_data.data[{ {},2,{},{} }]:add(-mean_u)
+yuv_data.data[{ {},2,{},{} }]:div(-std_u)
 -- normalize v globally:
-mean_v = data.data[{ {},3,{},{} }]:mean()
-std_v = data.data[{ {},3,{},{} }]:std()
-data.data[{ {},3,{},{} }]:add(-mean_v)
-data.data[{ {},3,{},{} }]:div(-std_v)
-
-torch.save('/home/idh/mallikarjun/SignLanguageDetection/data/Train/trainData_yuv_32.dat',trainData)
-data = nil
+mean_v = yuv_data.data[{ {},3,{},{} }]:mean()
+std_v = yuv_data.data[{ {},3,{},{} }]:std()
+yuv_data.data[{ {},3,{},{} }]:add(-mean_v)
+yuv_data.data[{ {},3,{},{} }]:div(-std_v)
+torch.save(yuv_dataPath,yuv_data)
 
 --[[testData = torch.load("/home/idh/mallikarjun/SignLanguageDetection/data/Test/testData_rgb_32.dat")
 testData.size = function() return (#testData.data)[1] end

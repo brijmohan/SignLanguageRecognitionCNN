@@ -1,5 +1,5 @@
 require 'image'
-rootPath = "/home/idh/mallikarjun/SignLanguageDetection/data/Train/Images/128x128/"
+rootPath = "../../data/Train/Images/128x128/"
 labels = dir.getdirectories(rootPath)
 
 for _,letter in ipairs(labels) do
@@ -13,21 +13,23 @@ for _,letter in ipairs(labels) do
 	rot =  10*(math.pi/180)
 	img_hflip = image.hflip(img)
 	img_extras = {}
-	os.execute('rm '..imageName)
+	--os.execute('rm '..imageName)
 	img_extras[1] = image.translate(img,trans_sz,trans_sz)
 	img_extras[2] = image.translate(img_hflip,trans_sz,trans_sz)
         img_extras[3] = image.rotate(img,rot)
 	img_extras[4] = image.rotate(img_hflip,rot)
         img_extras[5] = image.rotate(img,-rot)
 	img_extras[6] = image.rotate(img_hflip,-rot)
-	gauss_noise = image.gaussian(image_sz)
+	
+	--[[gauss_noise = image.gaussian(image_sz)
 	img_extras[7] = torch.Tensor(img:size())
 	img_extras[8] = torch.Tensor(img:size())
 	for i = 1,3 do
 	    img_extras[7][i] = img[i] + gauss_noise
 	    img_extras[8][i] = img_hflip[i] + gauss_noise
-	end
-        temp = string.split(imageName,'/')
+	end]]--
+    
+    temp = string.split(imageName,'/')
 	imageNamex = temp[#temp]:sub(1,-5)
 	images = {}
 	stride = math.floor(image_sz*0.1)

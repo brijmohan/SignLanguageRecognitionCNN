@@ -1,5 +1,8 @@
 require 'image'
-rootPath = "/home/anirudh/Computer Sc/Project_SMAI/Code and Data/Data/Train/Images"
+print('Note: **run this program from its folder**')
+rootPath ='../../data/Train/Images/32x32'
+--rgb_dataPath='../../data/Train/trainData_rgb_seg_32.dat'
+yuv_dataPath = '../../data/Train/trainData_yuv_segaug_32.dat'
 labels = dir.getdirectories(rootPath)
 nImages = 0
 X = {}
@@ -20,5 +23,7 @@ for i=1,nImages do
     samples.data[i]=X[i]
     samples.labels[i] = y[i]
 end
-saveto='/home/anirudh/Computer Sc/Project_SMAI/Code and Data/Data/Train/trainData_rgb_extras.dat'
-torch.save(saveto,samples)
+--torch.save(rgb_dataPath,samples)
+print('starting preprocessing..')
+dofile('preprocess_data.lua')
+print('preprocessing completed')

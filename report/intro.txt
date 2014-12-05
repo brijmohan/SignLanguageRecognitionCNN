@@ -1,0 +1,13 @@
+Gestures are recognized as crucial for human-human communication and have inspired research for human-robot interaction. Hand gestures are widely used compared to other body parts, and thus are the main focus of most of the research in this field.
+
+The most common approach for gesture recognition is the application of feature extraction techniques to represent postures. A popular feature extraction solution is to represent the hand by matching it to a template. A problem with the template match approach is that a high variety of gestures executed by different kinds of people cannot be matched. Most of the feature extraction solutions need to segment the hand from the background of the image which can be done using a color scheme. Jmaa et al. [1] use an YCbCr color space model to separate the color information from the image luminance and obtain hand segmentation. This approach is not reliable if using a large variation in skin colors and luminance.
+
+Deep learning models for image classification have been studied in a vast number of experiments in the past few years. Among deep learning techniques, Convolutional Neural Networks [2] have shown good results in the classification of static images [3]. The use of convolutional models focuses on how the human brain enhances and extracts features of an image in an implicit way using a set of local and global features.
+
+We have done extensive experiments on convolutional neural networks for classification of hand gestures to understand the effect of various parameters like architectures, pre-processing and regularization on the accuracy of classification. We have used bag of visual words as our baseline classifier.
+
+We have evaluated our techniques on two different datasets. One contains images taken from students of HCU that contains 26 diffrent hand gestures with varied backgrounds simulating real world scenario. The other database is a benchmark database that contains ten different hand gestures, three different backgrounds and has the hand always centered in the image.
+
+
+
+

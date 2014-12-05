@@ -1,0 +1,17 @@
+1. Jmaa, A.B., Mahdi, W., Jemaa, Y.B., Hamadou, A.B.: Hand localization and fin-
+gers features extraction: Application to digit recognition in sign language. In: Cor-
+chado, E., Yin, H. (eds.) IDEAL 2009. LNCS, vol. 5788, pp. 151–159. Springer,
+Heidelberg (2009)
+
+2. Lecun, Y., Bottou, L., Bengio, Y., Haffner, P.: Gradient-based learning applied to
+document recognition. Proceedings of the IEEE, 2278–2324 (1998)
+
+3. Nagi, J., Ducatelle, F., Di Caro, G., Ciresan, D., Meier, U., Giusti, A., Nagi, F.,
+Schmidhuber, J., Gambardella, L.: Max-pooling convolutional neural networks for
+vision-based hand gesture recognition. In: IEEE International Conference on Signal
+and Image Processing Applications (ICSIPA), pp. 342–347 (2011)
+
+4.  G.E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R.R. Salakhutdinov. Improving neural net-
+works by preventing co-adaptation of feature detectors.
+arXiv preprint arXiv:1207.0580
+, 2012.

@@ -52,7 +52,7 @@ end
 print '==> defining some tools'
 
 -- classes
-classes = {'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26'}
+classes = {'1','2','3','4','5','6','7','8','9','10'}--,'11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26'}
 
 -- This matrix records the current confusion across classes
 confusion = optim.ConfusionMatrix(classes)
@@ -117,7 +117,7 @@ function train()
    local time = sys.clock()
    
    -- set model to training mode (for modules that differ in training and testing, like Dropout)
-   model:training()
+   --model:training()
 
    -- shuffle at each epoch
    shuffle = torch.randperm(trsize)
