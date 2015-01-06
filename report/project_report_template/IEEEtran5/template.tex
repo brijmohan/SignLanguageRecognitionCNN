@@ -656,12 +656,19 @@ To avoid overfitting we have used the classification accuracy on test data after
 
 \section{Experiments and Results}
 
+\subsection{Experiments on IIIT Hand gesture database}
+
+We have conducted extensive experiments on IIIT Hand gesture database including Pre-processing like segmentation, etc.
+We have also augmented the data which increased the size of dataset 30 times. Due to huge expansion of dataset, we took the help of
+$cuda$ API to parallelize the training process. Using GPU we could process the convolution step in a batch size of 4, 16 and 32.
+Table I shows the results of various experiments that we performed on IIIT dataset.
+
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 \begin{table}[h]
 \centering
 \resizebox{.5\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|p{3cm}|c|c|}
+\begin{tabular}{|c|c|c|c|p{2cm}|c|c|}
 \hline
 \multicolumn{1}{|l|}{\textbf{S.no}} & \multicolumn{1}{l|}{\textbf{Data}} & \multicolumn{1}{l|}{\textbf{Filter Size}} & \multicolumn{1}{l|}{\textbf{Pool Size}} & \multicolumn{1}{l|}{\textbf{Layers}}                                                                                     & \multicolumn{1}{l|}{\textbf{Train}} & \multicolumn{1}{l|}{\textbf{Test}} \\ \hline
 1                                   & 1046x3x128x128                     & 5x5                                       & 2x2                                     & yuv(3x128x128)-\textgreater16x62x62-\textgreater256x29x29-\textgreater2-layered MLP(128-\textgreater26)                  & 100\%                               & 56\%                               \\ \hline
@@ -676,10 +683,52 @@ To avoid overfitting we have used the classification accuracy on test data after
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 
+\subsection{Experiments on Triesh hand posture database}
+To evaluate the model an experiment was performed using the Jochen Triesch
+Database (JTD) [6]. This database contains 10 hand postures, executed by 24
+persons in front of 3 different backgrounds, a light, a dark and a complex one.
+All images are of size 128x128 and have the hand posture centered. Figure 5
+shows examples of this database.
+
+\begin{figure}[h]
+\includegraphics[width=9cm]{trieshdata}
+\caption{Example of Triesch dataset}
+\end{figure}
+
+We also extracted Sobel features of Triesh dataset and performed experiments on them.
+Example of sobel features can be seen in figure 6.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.1\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{trieshorig}
+  \caption{Original}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.1\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{trieshsobelx}
+  \caption{Sobel X}
+  \label{fig:sub2}
+\end{subfigure}%
+\begin{subfigure}{.1\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{trieshsobely}
+  \caption{Sobel Y}
+  \label{fig:sub2}
+\end{subfigure}%
+\captionsetup{justification=centering}
+\caption{Extraction of Sobel features from Triesh dataset}
+\label{fig:test}
+\end{figure}
+
+Table II shows the results of various experiments that we performed on Triesch dataset.
+
 \begin{table}[h]
 \centering
 \resizebox{.5\textwidth}{!}{%
-\begin{tabular}{|c|l|c|c|c|c|c|}
+\begin{tabular}{|c|l|c|c|p{2cm}|c|c|}
 \hline
 \multicolumn{1}{|l|}{\textbf{S.no}} & \textbf{Data}                                                                          & \multicolumn{1}{l|}{\textbf{Filter Size}} & \multicolumn{1}{l|}{\textbf{Pool Size}} & \multicolumn{1}{l|}{\textbf{Layers}}                                                                             & \multicolumn{1}{l|}{\textbf{Train}} & \multicolumn{1}{l|}{\textbf{Test}} \\ \hline
 1                                   & \multicolumn{1}{c|}{75x1x64x64}                                                        & 5x5                                       & 2x2                                     & 1x64x64 -\textgreater 16x30x30 -\textgreater 64x13x13 -\textgreater 256x4x4 -\textgreater 128 -\textgreater 10   & 100\%                               & 76.6\%                             \\ \hline
@@ -704,17 +753,44 @@ An image can be represented by a set of keypoint descriptors, but this set varie
 
 SVM is used as the classifier for the different classes that are trained based on Bag of Visual words model.
 
+\section{Discussion}
+Each experiment was executed 5 times and the mean of the acuuracy for 500
+epochs was calculated. The database was divided into training and test. For all 
+the experiments, the selection was random and it used $70\%$ of
+the database for training and $30\%$ for testing. All the experiments were implemented 
+in Lua using the library Torch7 and were executed in a machine with an 
+Intel Core i5 2.67 Ghz processor, with 4GB of RAM and 1GB GPU.
 
+\begin{figure}[h]
+\includegraphics[width=9cm]{iiitbars}
+\caption{Results of experiments with IIIT Dataset}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=9cm]{trieschbars}
+\caption{Results of experiments with Triesch Dataset}
+\end{figure}
+
+When we use only the Sobel filters, the results show that the architecture
+still cannot extract an optimal set of features. Only when put together, the Sobel
+operator acts like a specialization for the original image, giving the model a bias
+for the edge enhancement, and produces better results.
+
+There are no horizontal connections in the channels, making each channel
+independent. This makes the filters of each channel act only on the channel's
+own input. The weight update is guided by the three channels' results, but each
+filter must act differently for each kind of information it receives, otherwise the
+information specialization of each filter would be lost.
 
 \section{Conclusion}
-Based on the analysis of various experiments we can conclude that data preprocessing,data augmentation helped in improving the classificaiton accuracy. Model parameters such as depth of convolution, number of feature maps per layer,Convolution Kernel size, Pool size need to be adjusted such that each unit in the last convolution layer would have a receptive field of atleast $80\%$ of the input image. Regularization techniques such as Dropout, Weight Decay has only improved the classification accuracy by negligible factors. Compared with the baseline model the accuracy has improved by two folds by using CNN for classfication. Although CNN gave very good results for some classes the model gave mixed results for similar looking hand gestures like for M and N.
+Based on the analysis of various experiments we can conclude that data preprocessing, data augmentation helped in improving the classificaiton accuracy. Model parameters such as depth of convolution, number of feature maps per layer, Convolution Kernel size, Pool size need to be adjusted such that each unit in the last convolution layer would have a receptive field of atleast $80\%$ of the input image. Regularization techniques such as Dropout, Weight Decay has only improved the classification accuracy by negligible factors. Compared with the baseline model the accuracy has improved by two folds by using CNN for classfication. Although CNN gave very good results for some classes the model gave mixed results for similar looking hand gestures like for M and N.
 
 
 
 \section*{Acknowledgment}
 
 
-The authors would like to thank Ridhiman Dasgupta for the insightful discussions and for his help in providing infrastructure for running experiments.
+The authors would like to thank Riddhiman Dasgupta for the insightful discussions and for his help in providing infrastructure for running experiments.
 
 
 
@@ -764,6 +840,20 @@ arXiv preprint arXiv:1207.0580
 
 \bibitem{IEEEhowto:kopka}
 D. G. Lowe. Distinctive image features from scale-invariant keypoints. Int. J. Comput. Vision, 60(2):91–110, 2004.
+
+\bibitem{IEEEhowto:kopka}
+Triesch, J., Malsburg, C.V.D.: Robust classification of hand postures against com-
+plex backgrounds. In: Interational Conference on Automatic Face and Gesture
+Recognition, pp. 170–175 (1996)
+
+\bibitem{IEEEhowto:kopka}
+Rautaray, S., Agrawal, A.: Vision based hand gesture recognition for human com-
+puter interaction: a survey. Artificial Intelligence Review, 1–54 (November 2012)
+
+\bibitem{IEEEhowto:kopka}
+Ranzato, M., Huang, F.J., Boureau, Y.-L., LeCun, Y.: Unsupervised learning of
+invariant feature hierarchies with applications to object recognition. In: IEEE Con-
+ference on Computer Vision and Pattern Recognition(CVPR), pp. 1–8 (June 2007)
   
 \end{thebibliography}
 

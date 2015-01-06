@@ -15,3 +15,5 @@ and Image Processing Applications (ICSIPA), pp. 342–347 (2011)
 works by preventing co-adaptation of feature detectors.
 arXiv preprint arXiv:1207.0580
 , 2012.
+
+[5] D. G. Lowe. Distinctive image features from scale-invariant keypoints. Int. J. Comput. Vision, 60(2):91–110, 2004.

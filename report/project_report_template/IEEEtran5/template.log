@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.18)  5 DEC 2014 12:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.18)  5 DEC 2014 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -171,19 +171,49 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 \sf@bottom=\skip48
 ) (./template.aux
 
-LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+LaTeX Warning: Label `fig:sub1' multiply defined.
 
 
-LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
 
 
-LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+LaTeX Warning: Label `fig:sub2' multiply defined.
 
 
-LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:test' multiply defined.
 
 
 LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 )
 \openout1 = `template.aux'.
@@ -348,64 +378,239 @@ Overfull \hbox (2.5pt too wide) in paragraph at lines 632--638
 []\OT1/ptm/m/n/10 , 
  []
 
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 672.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 679.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 672.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 679.
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
 []\OT1/ptm/m/n/7 yuv(3x128x128)-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x62x62-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x29
-x29-
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x62x62-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x29x29-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 2-
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 679--679
+\OT1/ptm/m/n/7 layered MLP(128-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
 []\OT1/ptm/m/n/7 yuv(3x128x128)-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x62x62-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x29
-x29-
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x62x62-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x29x29-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 2-
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 679--679
+\OT1/ptm/m/n/7 layered MLP(128-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
 []\OT1/ptm/m/n/7 yuv(3x128x128)-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x49x49-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x9x
-9-
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x49x49-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
-[]\OT1/ptm/m/n/7 yuv(3x64x64)-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x30x30-
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x9x9-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 2-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x13x13-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x4x
-4-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 2-
+Underfull \hbox (badness 6859) in paragraph at lines 679--679
+\OT1/ptm/m/n/7 layered MLP(128-
  []
 
 
-Overfull \hbox (9.01492pt too wide) in paragraph at lines 663--673
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+[]\OT1/ptm/m/n/7 yuv(3x64x64)-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x30x30-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x13x13-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--679
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x4x4-\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 2-
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 679--679
+\OT1/ptm/m/n/7 layered MLP(128-
+ []
+
+
+Overfull \hbox (9.00351pt too wide) in paragraph at lines 670--680
  [][] 
  []
 
 
-Overfull \hbox (9.0055pt too wide) in paragraph at lines 681--692
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] <images/trieshdata.png, id=28, 874.26625pt x 87.32625pt>
+File: images/trieshdata.png Graphic file (type png)
+
+<use images/trieshdata.png>
+Package pdftex.def Info: images/trieshdata.png used on input line 694.
+(pdftex.def)             Requested size: 256.0748pt x 25.57846pt.
+
+Overfull \hbox (3.02493pt too wide) in paragraph at lines 694--695
+[][] 
+ []
+
+<images/trieshorig.png, id=29, 128.48pt x 128.48pt>
+File: images/trieshorig.png Graphic file (type png)
+
+<use images/trieshorig.png>
+Package pdftex.def Info: images/trieshorig.png used on input line 705.
+(pdftex.def)             Requested size: 41.93068pt x 41.92998pt.
+
+<images/trieshsobelx.png, id=30, 128.48pt x 128.48pt>
+File: images/trieshsobelx.png Graphic file (type png)
+
+<use images/trieshsobelx.png>
+Package pdftex.def Info: images/trieshsobelx.png used on input line 711.
+(pdftex.def)             Requested size: 41.93068pt x 41.92998pt.
+
+<images/trieshsobely.png, id=31, 128.48pt x 128.48pt>
+File: images/trieshsobely.png Graphic file (type png)
+
+<use images/trieshsobely.png>
+Package pdftex.def Info: images/trieshsobely.png used on input line 717.
+(pdftex.def)             Requested size: 41.93068pt x 41.92998pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\OT1/ptm/m/n/7 1x64x64 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x30x30
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OT1/ptm/m/n/7 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x13x13 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x4x4 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 128
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\OT1/ptm/m/n/7 1x128x128 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x41x41
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OT1/ptm/m/n/7 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x12x12 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x2x2 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 128
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\OT1/ptm/m/n/7 1x128x128 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x41x41
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OT1/ptm/m/n/7 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x12x12 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x2x2 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 128
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\OT1/ptm/m/n/7 1x128x128 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x41x41
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OT1/ptm/m/n/7 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x12x12 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x2x2 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 128
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\OT1/ptm/m/n/7 1x128x128 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 16x41x41
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OT1/ptm/m/n/7 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 64x12x12 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 256x2x2 -\OML/cmm/m/it/7 >\OT1/ptm/m/n/7 128
+ []
+
+
+Overfull \hbox (9.01079pt too wide) in paragraph at lines 730--741
  [][] 
  []
 
@@ -415,14 +620,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
-<images/baseline.png, id=19, 655.44875pt x 149.55875pt>
+<images/baseline.png, id=32, 655.44875pt x 149.55875pt>
 File: images/baseline.png Graphic file (type png)
 
 <use images/baseline.png>
-Package pdftex.def Info: images/baseline.png used on input line 700.
+Package pdftex.def Info: images/baseline.png used on input line 749.
 (pdftex.def)             Requested size: 256.0748pt x 58.43036pt.
 
-Overfull \hbox (3.02493pt too wide) in paragraph at lines 700--701
+Overfull \hbox (3.02493pt too wide) in paragraph at lines 749--750
 [][] 
  []
 
@@ -432,7 +637,48 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[3]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/iiitbars.png, id=33, 682.55pt x 501.875pt>
+File: images/iiitbars.png Graphic file (type png)
+ <use images/iiitbars.png>
+Package pdftex.def Info: images/iiitbars.png used on input line 765.
+(pdftex.def)             Requested size: 256.0748pt x 188.29456pt.
+
+Overfull \hbox (3.02493pt too wide) in paragraph at lines 765--766
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/trieschbars.png, id=34, 682.55pt x 501.875pt>
+File: images/trieschbars.png Graphic file (type png)
+
+<use images/trieschbars.png>
+Package pdftex.def Info: images/trieschbars.png used on input line 770.
+(pdftex.def)             Requested size: 256.0748pt x 188.29456pt.
+
+Overfull \hbox (3.02493pt too wide) in paragraph at lines 770--771
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <./images/trieshdata.png> <./images/trieshorig.png (PNG copy)> <./images/tri
+eshsobelx.png (PNG copy)> <./images/trieshsobely.png (PNG copy)> <./images/base
+line.png>]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
@@ -457,16 +703,17 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <./images/baseline.png>] (./template.aux)
+[5 <./images/iiitbars.png (PNG copy)> <./images/trieschbars.png (PNG copy)>]
+(./template.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3421 strings out of 494985
- 57160 string characters out of 6180356
- 131288 words of memory out of 5000000
- 6619 multiletter control sequences out of 15000+600000
+ 3451 strings out of 494985
+ 57877 string characters out of 6180356
+ 127288 words of memory out of 5000000
+ 6643 multiletter control sequences out of 15000+600000
  35192 words of font info for 64 fonts, out of 8000000 for 9000
  39 hyphenation exceptions out of 8191
  38i,14n,38p,1255b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -481,10 +728,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on template.pdf (4 pages, 349750 bytes).
+Output written on template.pdf (5 pages, 464175 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
