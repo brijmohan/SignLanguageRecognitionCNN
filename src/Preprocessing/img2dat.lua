@@ -1,8 +1,8 @@
 require 'image'
 print('Note: **run this program from its folder**')
-rootPath='/home/brij/Documents/IIIT/courses/SMAI/Project/datasets/Triesch/Triesch-Train/original'
-dataPath='../../data/Train/trainData_triesch_128.dat'
---yuv_dataPath = '../../data/Test/testData_triesch_64.dat'
+rootPath='/home/brij/Documents/IIIT/courses/SMAI/Project/SignLanguageDetection/data/Test/Images/64x64'
+--dataPath='../../data/Train/trainData_64_aug.dat'
+yuv_dataPath = '../../data/Test/testData_64.dat'
 labels = dir.getdirectories(rootPath)
 nImages = 0
 X = {}
@@ -14,7 +14,7 @@ for _,letter in ipairs(labels) do
 --    print(imageNames)
     for _,imageName in ipairs(imageNames) do
         nImages = nImages + 1
-        X[nImages] = image.loadPPM(imageName)
+        X[nImages] = image.load(imageName)
         y[nImages] = string.byte(letter:sub(-1,-1)) - string.byte('A',1) + 1
     end
 end
@@ -24,7 +24,7 @@ for i=1,nImages do
     samples.labels[i] = y[i]
 end
 samples.size = function(self) return (#self.data)[1] end
-torch.save(dataPath,samples)
---print('starting preprocessing..')
---dofile('preprocess_data.lua')
---print('preprocessing completed')
+--torch.save(dataPath,samples)
+print('starting preprocessing..')
+dofile('preprocess_data.lua')
+print('preprocessing completed')

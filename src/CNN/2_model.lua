@@ -37,21 +37,21 @@
 	print '==> define parameters'
 
 	-- N-class problem
-        noutputs = 10
+        noutputs = 26
 
 	-- input dimensions
         nfeats = 3
-        width = 128
-        height = 128
+        width = 64
+        height = 64
         ninputs = nfeats*width*height
 
 	-- number of hidden units (for MLP only):
 		nhiddens = ninputs / 2
 
     -- hidden units, filter sizes (for ConvNet only):
-        nstates = {32,64,256,128}
+        nstates = {16,64,256,128}
         fanin = {1,4,4}
-        filtsize = 5
+        filtsize = 10
         poolsize = 2
         stride = 2
         normkernel = image.gaussian1D(7)
@@ -119,10 +119,10 @@
 	        
 	        -- stage 4 : standard 2-layer neural network
             --model:add(nn.View(nstates[2]*5*5))
-            model:add(nn.View(nstates[3]*12*12))
+            model:add(nn.View(nstates[3]*8*8))
             --model:add(nn.Dropout(0.5)) -- Adding dropout
 	        --model:add(nn.Linear(nstates[2]*5*5, nstates[3]))
-	        model:add(nn.Linear(nstates[3]*12*12, nstates[4]))
+	        model:add(nn.Linear(nstates[3]*8*8, nstates[4]))
 	        model:add(nn.Tanh())
 	        --model:add(nn.ReLU())
 	        --model:add(nn.Dropout(0.5))

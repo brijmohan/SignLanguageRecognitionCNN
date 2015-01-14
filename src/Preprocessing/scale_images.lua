@@ -1,6 +1,6 @@
 require 'image'
-src = "/home/brij/Documents/IIIT/courses/SMAI/Project/datasets/Triesch/Triesch-Test/original"
-dst = "/home/brij/Documents/IIIT/courses/SMAI/Project/datasets/Triesch/Triesch-Test/64x64"
+src = "/home/brij/Documents/IIIT/courses/SMAI/Project/SignLanguageDetection/data/Test/Images/128x128"
+dst = "/home/brij/Documents/IIIT/courses/SMAI/Project/SignLanguageDetection/data/Test/Images/64x64"
 scaleHeight = 64
 scaleWidth = 64
 labels = dir.getdirectories(src)
@@ -11,7 +11,7 @@ for _,letter in ipairs(labels) do
     imageNames = dir.getfiles(letter)
 --    print(imageNames)
     for _,imageName in ipairs(imageNames) do
-        img = image.loadPPM(imageName)
+        img = image.load(imageName)
         img_scaled = image.scale(img,scaleWidth,scaleHeight)
         imageName_x = imageName:sub(-(imageName:reverse():find('/')-1),-1)
         imageName_x = imageName_x:sub(1, -5) .. '.png'

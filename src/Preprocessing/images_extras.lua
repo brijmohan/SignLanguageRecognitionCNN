@@ -1,5 +1,5 @@
 require 'image'
-rootPath = "../../data/Train/Images/128x128/"
+rootPath = "../../data/Train/Images/64x64_aug/"
 labels = dir.getdirectories(rootPath)
 
 for _,letter in ipairs(labels) do
