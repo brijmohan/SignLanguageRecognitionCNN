@@ -20,8 +20,8 @@ if not opt then
 end
 
 print '==> loading dataset'
-trainData = torch.load("../../data/Train/trainData_yuv_128.dat")
-testData = torch.load("../../data/Test/testData_yuv_128.dat")
+trainData = torch.load("../../data/ex3/trainData_128_rgb.dat")
+testData = torch.load("../../data/ex3/testData_128_rgb.dat")
 ----------------------------------------------------------------------
 -- training/test size
 

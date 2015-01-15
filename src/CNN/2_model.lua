@@ -41,8 +41,8 @@
 
 	-- input dimensions
         nfeats = 3
-        width = 64
-        height = 64
+        width = 128
+        height = 128
         ninputs = nfeats*width*height
 
 	-- number of hidden units (for MLP only):
@@ -78,8 +78,10 @@
 	elseif opt.model == 'convnet' then
 
 	    if opt.type == 'cuda' then 
+            
+            model = torch.load('/home/brij/Documents/IIIT/courses/SMAI/Project/SignLanguageDetection/src/CNN/results/model.net')
         
-            print 'Creating cuda model...'
+ --[[           print 'Creating cuda model...'
 	        -- a typical convolutional network, with locally-normalized hidden
 		    -- units, and L2-pooling
 	        -- Note: the architecture of this convnet is loosely based on Pierre Sermanet's
@@ -131,7 +133,7 @@
    	        --model:add(nn.Tanh())
 	        --model:add(nn.ReLU())   
 	        --model:add(nn.Dropout(0.5))	        
-	        model:add(nn.Linear(nstates[4], noutputs))
+	        model:add(nn.Linear(nstates[4], noutputs)) --]]
 	    
 	    else 
 	        -- a typical convolutional network, with locally-normalized hidden

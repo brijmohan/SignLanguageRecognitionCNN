@@ -18,8 +18,8 @@ if not opt then
 	require 'nn'
 	require 'nnx'
 	opt = {}
-	testData = torch.load('../../data/Test/testData_yuv_32.dat')
-	trainData = torch.load('../../data/Train/trainData_yuv_32.dat')
+	--testData = torch.load('../../data/Test/testData_yuv_32.dat')
+	--trainData = torch.load('../../data/Train/trainData_yuv_32.dat')
 	-- classes
 	classes = {'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26'}
 	-- This matrix records the current confusion across classes
